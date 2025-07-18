@@ -11,7 +11,7 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   removeFields.forEach((param) => delete reqQuery[param]);
 
   // Create query string
-  let queryStr = JSON.stringify(req.query);
+  let queryStr = JSON.stringify(reqQuery);
 
   // Create operators ($gt, $gte etc)
   queryStr = queryStr.replace(

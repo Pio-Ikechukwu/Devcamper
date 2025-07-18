@@ -15,7 +15,7 @@ const CourseSchema = new mongoose.Schema({
     required: [true, "Please add number of weeks"],
   },
   tuition: {
-    type: String,
+    type: Number,
     required: [true, "Please add a tuition cost"],
   },
   minimumSkill: {
@@ -62,7 +62,7 @@ CourseSchema.statics.getAverageCost = async function (bootcampId) {
     await this.model("Bootcamp").findByIdAndUpdate(bootcampId, {
       averageCost: Math.ceil(obj[0].averageCost / 10) * 10,
     });
-  } catch {
+  } catch (err) {
     console.error(err);
   }
 };
